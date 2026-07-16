@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MediCare Premium - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#adecff",
+                      "tertiary-fixed-dim": "#c9bfff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "tertiary": "#432f9c",
+                      "surface-container-highest": "#e1e2e4",
+                      "primary-container": "#0052cc",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#001848",
+                      "surface-container-high": "#e7e8ea",
+                      "tertiary-container": "#5b49b5",
+                      "secondary": "#00687a",
+                      "on-secondary-container": "#006374",
+                      "surface-bright": "#f8f9fb",
+                      "surface-variant": "#e1e2e4",
+                      "on-secondary-fixed-variant": "#004e5d",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#5dd6f3",
+                      "inverse-surface": "#2e3132",
+                      "primary-fixed": "#dae2ff",
+                      "tertiary-fixed": "#e5deff",
+                      "on-tertiary-fixed-variant": "#4633a0",
+                      "on-tertiary-container": "#d5ccff",
+                      "inverse-on-surface": "#f0f1f3",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#434654",
+                      "on-secondary-fixed": "#001f26",
+                      "on-error": "#ffffff",
+                      "surface-container": "#edeef0",
+                      "outline-variant": "#c3c6d6",
+                      "surface-dim": "#d9dadc",
+                      "on-background": "#191c1e",
+                      "primary": "#003d9b",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#b2c5ff",
+                      "secondary-container": "#6ae1ff",
+                      "on-primary-container": "#c4d2ff",
+                      "background": "#f8f9fb",
+                      "on-tertiary-fixed": "#1a0063",
+                      "outline": "#737685",
+                      "surface": "#f8f9fb",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#0c56d0",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "surface-container-low": "#f3f4f6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "xl": "64px",
+                      "base": "8px",
+                      "md": "24px",
+                      "lg": "40px",
+                      "xs": "4px",
+                      "margin": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        body { background-color: #f8f9fb; color: #191c1e; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+    <nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-md px-sm z-50">
+        <div class="mb-lg px-sm">
+            <h1 class="font-headline-sm text-headline-sm font-bold text-primary">MediCare Premium</h1>
+            <p class="font-label-sm text-label-sm text-on-surface-variant mt-xs"><span id="branchName"></span></p>
+        </div>
+        <ul id="sidebarMenu" class="flex-1 space-y-xs overflow-y-auto no-scrollbar">
+            </ul>
+        <div class="mt-auto pt-md border-t border-outline-variant">
+            <button onclick="Modal.open('appointment')" class="w-full bg-primary text-on-primary font-label-md text-label-md py-sm px-md rounded-full shadow-sm hover:opacity-90 transition-opacity mb-md flex items-center justify-center gap-xs">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+                New Appointment
+            </button>
+            <div class="flex items-center gap-sm px-sm">
+                <img id="doctorAvatar" src="/assets/images/avatar-placeholder.png" class="w-10 h-10 rounded-full object-cover border border-outline-variant"/>
+                <div>
+                    <p class="font-body-sm text-body-sm font-semibold text-on-surface"><span id="doctorName"></span></p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant"><span id="doctorSpecialty"></span></p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ml-64 min-h-screen flex flex-col">
+        <header class="bg-surface border-b border-outline-variant shadow-sm docked full-width top-0 sticky z-40 flex justify-between items-center h-16 px-lg w-full">
+            <div class="flex-1 max-w-md relative">
+                <span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input id="globalSearch" class="w-full bg-surface-container-low border border-outline-variant rounded-full py-xs pl-xl pr-md font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search..."/>
+            </div>
+            <div class="flex items-center gap-md">
+                <button class="text-on-surface-variant hover:text-primary transition-all scale-95 active:scale-90 relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span id="notificationCount" class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-surface"></span>
+                </button>
+                <button class="text-on-surface-variant hover:text-primary transition-all scale-95 active:scale-90">
+                    <span class="material-symbols-outlined">history</span>
+                </button>
+                <div class="w-px h-6 bg-outline-variant mx-xs"></div>
+                <button onclick="window.open('/help')" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Help</button>
+                <button onclick="fetch('/support')" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Support</button>
+                <button onclick="fetch('/emergency', {method: 'POST'})" class="font-label-md text-label-md text-error hover:bg-error-container hover:text-on-error-container px-sm py-xs rounded-md transition-colors border border-error">Emergency</button>
+            </div>
+        </header>
+
+        <main class="flex-1 p-margin overflow-y-auto">
+<div class="flex items-center justify-between mb-gutter">
+
+    <div>
+
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">
+            Doctors
+        </h2>
+
+        <p class="text-on-surface-variant">
+            Manage doctors and specialists.
+        </p>
+
+    </div>
+
+    <button
+        onclick="Modal.open('doctor')"
+        class="bg-primary text-on-primary px-4 py-2 rounded-lg flex items-center gap-2">
+
+        <span class="material-symbols-outlined">
+            person_add
+        </span>
+
+        Add Doctor
+
+    </button>
+
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 mb-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+        <input
+            id="searchDoctor"
+            type="text"
+            placeholder="Search doctor..."
+            class="border rounded-lg px-3 py-2">
+
+        <select
+            id="specialtyFilter"
+            class="border rounded-lg px-3 py-2">
+
+            <option value="">All Specialties</option>
+
+        </select>
+
+        <select
+            id="statusFilter"
+            class="border rounded-lg px-3 py-2">
+
+            <option value="">All Status</option>
+
+            <option>Active</option>
+
+            <option>Inactive</option>
+
+        </select>
+
+        <button
+            onclick="loadDoctors()"
+            class="bg-primary text-white rounded-lg">
+
+            Search
+
+        </button>
+
+    </div>
+
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+
+    <table class="w-full">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Name</th>
+
+                <th>Specialty</th>
+
+                <th>Phone</th>
+
+                <th>Email</th>
+
+                <th>Status</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="doctorsTable">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div
+    id="doctorsPagination"
+    class="mt-6">
+</div>
+
+        </main>
+    </div>
+    <script src="../../config/config.js"></script>
+
+<script src="../../utils/token.js"></script>
+<script src="../../utils/validator.js"></script>
+<script src="../../utils/toast.js"></script>
+<script src="../../utils/loader.js"></script>
+
+<script src="../../components/sidebar.js"></script>
+<script src="../../components/navbar.js"></script>
+<script src="../../components/breadcrumb.js"></script>
+<script src="../../components/modal.js"></script>
+<script src="../../components/pagination.js"></script>
+<script src="../../components/table.js"></script>
+<script src="../../components/empty-state.js"></script>
+<script src="../../components/error-state.js"></script>
+<script src="../../components/skeleton.js"></script>
+
+<script src="../../api/api.js"></script>
+<script src="../../api/auth.api.js"></script>
+
+<script src="../../api/doctors.api.js"></script>
+
+<script src="doctors.js"></script></body>
+</html>
