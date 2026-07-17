@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. حارس الأمان (Auth Guard)
     const session = await checkSession();
     if (!session) {
-        window.location.replace('login.html');
+        window.location.replace('index.html');
         return; // توقيف السكربت لو مفيش جلسة
     } else {
         // استخراج اسم الدكتور وعرضه في الشريط الجانبي
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
             await logoutUser();
-            window.location.replace('login.html');
+            window.location.replace('index.html');
         });
     }
 

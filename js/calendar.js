@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. حماية الصفحة (Authentication)
     const session = await checkSession();
     if (!session) {
-        window.location.replace('login.html');
+        window.location.replace('index.html');
         return;
     } else {
         // عرض اسم المستخدم (الطبيب/الموظف) في القائمة الجانبية
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // زر تسجيل الخروج
     document.getElementById('btn-logout')?.addEventListener('click', async () => {
         await logoutUser();
-        window.location.replace('login.html');
+        window.location.replace('index.html');
     });
 
     // 2. تحديث عنوان الشهر والسنة تلقائياً

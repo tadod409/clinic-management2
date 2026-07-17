@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. فحص الجلسة (Auth)
     const session = await checkSession();
     if (!session) {
-        window.location.replace('login.html');
+        window.location.replace('index.html');
         return;
     } else {
         const doctorName = escapeHTML(session.user.email).split('@')[0];
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('btn-logout')?.addEventListener('click', async () => {
         await logoutUser();
-        window.location.replace('login.html');
+        window.location.replace('index.html');
     });
 
     // 2. استخراج الـ ID الخاص بالمريض من الرابط

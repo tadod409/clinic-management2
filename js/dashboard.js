@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const session = await checkSession();
         if (!session) {
             console.warn('No active session. Authentication required for DB operations.');
-             window.location.replace('login.html'); // يمكنك تفعيلها لاحقاً
+             window.location.replace('index.html'); // يمكنك تفعيلها لاحقاً
         } else {
             const userEmail = escapeHTML(session.user.email);
             const doctorName = userEmail.split('@')[0];
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('btn-logout')?.addEventListener('click', async () => {
         if (confirm("Logout?")) {
             await logoutUser();
-            window.location.replace('login.html'); 
+            window.location.replace('index.html'); 
         }
     });
     async function createPatientFolder(patientName) {
